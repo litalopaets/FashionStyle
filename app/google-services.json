@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "318404000213",
+    "firebase_url": "https://fashionstyle2.firebaseio.com",
+    "project_id": "fashionstyle2",
+    "storage_bucket": "fashionstyle2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318404000213:android:7df574a2913174f5",
+        "android_client_info": {
+          "package_name": "com.example.admin.fashionstyle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318404000213-8o8teu502b3n9egd38dpujcadva2rho9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.admin.fashionstyle",
+            "certificate_hash": "b5c3ba454249090127ed454998ea82b7b6cadc60"
+          }
+        },
+        {
+          "client_id": "318404000213-soq87rciri37j7ntkb1ph8cc3nl338jf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4FubfCiGeq6gCjsd_XvFRD1MtzH20hVw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318404000213-soq87rciri37j7ntkb1ph8cc3nl338jf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
