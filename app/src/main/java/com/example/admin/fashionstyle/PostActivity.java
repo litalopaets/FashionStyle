@@ -90,7 +90,7 @@ public class PostActivity extends AppCompatActivity {
             uploadTask.continueWith(new Continuation() {
                 @Override
                 public Object then(@NonNull Task task) throws Exception {
-                    if (!task.isSuccessful()) {
+                    if (!task.isComplete()) {
                         throw  task.getException();
                     }
                     return filereference.getDownloadUrl();
