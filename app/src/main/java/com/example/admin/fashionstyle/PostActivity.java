@@ -87,10 +87,10 @@ public class PostActivity extends AppCompatActivity {
             final StorageReference filereference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
 
             uploadTask = filereference.putFile(imageUri);
-            uploadTask.continueWith(new Continuation() {
+            uploadTask.continueWithTask(new Continuation() {
                 @Override
                 public Object then(@NonNull Task task) throws Exception {
-                    if (!task.isComplete()) {
+                    if (!task.isSuccessful()) {
                         throw  task.getException();
                     }
                     return filereference.getDownloadUrl();
