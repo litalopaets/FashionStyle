@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
 
 
         checkFollowing();
-        
+
 
         return view;
     }
