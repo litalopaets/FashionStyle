@@ -69,6 +69,22 @@ public class PostAdapter extends  RecyclerView.Adapter<PostAdapter.ViewHolder>{
         isLiked(post.getPostid(), viewHolder.like);
         nrLikes(viewHolder.likes, post.getPostid());
         getComments(post.getPostid(), viewHolder.comments);
+        isSaved(post.getPostid(), viewHolder.save);
+
+
+        viewHolder.save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (viewHolder.save.getTag().equals("save")) {
+                    FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid())
+                            .child(post.getPostid()).setValue(true);
+                } else {
+                    FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid())
+                            .child(post.getPostid()).removeValue();
+                }
+            }
+        });
+
 
 
         viewHolder.like.setOnClickListener(new View.OnClickListener() {
@@ -212,6 +228,28 @@ public class PostAdapter extends  RecyclerView.Adapter<PostAdapter.ViewHolder>{
         });
     }
 
+        private  void isSaved(final String postid, final ImageView imageView) {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Saves")
+                .child(firebaseUser.getUid());
 
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(postid).exists()) {
+                    imageView.setImageResource(R.drawable.ic_savee_black);
+                    imageView.setTag("saved");
+                } else {
+                    imageView.setImageResource(R.drawable.ic_savee);
+                    imageView.setTag("save");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

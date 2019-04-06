@@ -1,16 +1,19 @@
 package com.example.admin.fashionstyle.Fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.admin.fashionstyle.Adapter.MyFotoAdapter;
 import com.example.admin.fashionstyle.Adapter.PostAdapter;
 import com.example.admin.fashionstyle.Model.Post;
 import com.example.admin.fashionstyle.R;
@@ -22,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -35,12 +39,15 @@ public class HomeFragment extends Fragment {
     private List<String> followingList;
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
         View view = inflater.inflate(R.layout.fragment_home, container,false);
+
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -54,7 +61,6 @@ public class HomeFragment extends Fragment {
 
 
         checkFollowing();
-
 
         return view;
     }
@@ -91,11 +97,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 postLists.clear();
+
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()){
                     Post post = snapshot.getValue(Post.class);
                     for(String id: followingList){
                         if(post.getPublisher().equals(id)){
                             postLists.add(post);
+
                         }
                     }
                 }
@@ -108,5 +116,4 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
 }
