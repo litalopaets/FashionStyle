@@ -18,6 +18,7 @@ import com.example.admin.fashionstyle.Adapter.PostAdapter;
 import com.example.admin.fashionstyle.Model.Post;
 import com.example.admin.fashionstyle.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +41,6 @@ public class HomeFragment extends Fragment {
 
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
         postLists = new ArrayList<>();
         postAdapter = new PostAdapter(getContext(),postLists);
         recyclerView.setAdapter(postAdapter);
+
 
 
         checkFollowing();
@@ -106,6 +107,9 @@ public class HomeFragment extends Fragment {
 
                         }
                     }
+                   if (post.getPublisher().equals(FirebaseAuth.getInstance().getUid())) {
+                        postLists.add(post);
+                   }
                 }
                 postAdapter.notifyDataSetChanged();
             }
