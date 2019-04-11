@@ -22,6 +22,7 @@ import com.example.admin.fashionstyle.Adapter.MyFotoAdapter;
 import com.example.admin.fashionstyle.EditProfileActivity;
 import com.example.admin.fashionstyle.Model.Post;
 import com.example.admin.fashionstyle.Model.User;
+import com.example.admin.fashionstyle.OptionsActivity;
 import com.example.admin.fashionstyle.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -131,6 +132,14 @@ public class ProfileFragment extends Fragment {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid()).child("following").child(profileid).removeValue();
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid).child("followers").child(firebaseUser.getUid()).removeValue();
                 }
+            }
+        });
+
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), OptionsActivity.class);
+                startActivity(intent);
             }
         });
 
