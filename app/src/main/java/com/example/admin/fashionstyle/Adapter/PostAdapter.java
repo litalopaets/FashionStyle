@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.admin.fashionstyle.CommentsActivity;
+import com.example.admin.fashionstyle.FollowersActivity;
 import com.example.admin.fashionstyle.Fragment.PostDetailFragment;
 import com.example.admin.fashionstyle.Fragment.ProfileFragment;
 import com.example.admin.fashionstyle.Model.Post;
@@ -174,6 +175,17 @@ public class PostAdapter extends  RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 Intent intent = new Intent(mContext, CommentsActivity.class);
                 intent.putExtra("postid", post.getPostid());
                 intent.putExtra("publisherid", post.getPublisher());
+                mContext.startActivity(intent);
+            }
+        });
+
+
+        viewHolder.likes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, FollowersActivity.class);
+                intent.putExtra("id", post.getPostid());
+                intent.putExtra("title","likes");
                 mContext.startActivity(intent);
             }
         });
