@@ -13,17 +13,20 @@ import com.example.admin.fashionstyle.Fragment.HomeFragment;
 import com.example.admin.fashionstyle.Fragment.NotificationFragment;
 import com.example.admin.fashionstyle.Fragment.ProfileFragment;
 import com.example.admin.fashionstyle.Fragment.SearchFragment;
+import com.example.admin.fashionstyle.Model.DatabaseHelper;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Fragment selectedFragment = null;
+    DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myDb = new DatabaseHelper(this);
 
         bottomNavigationView = findViewById(R.id.buttom_navigation);
 
