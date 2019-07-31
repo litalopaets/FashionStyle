@@ -8,14 +8,16 @@ public class User {
     private String fullname;
     private String imageurl;
     private String bio;
+    private String email;
 
 
-    public User(String id, String username, String fullname, String imageurl, String bio) {
+    public User(String id, String username, String fullname, String imageurl, String bio, String email) {
         this.id = id;
         this.username = username;
         this.fullname = fullname;
         this.imageurl = imageurl;
         this.bio = bio;
+        this.email = email;
     }
 
 
@@ -62,4 +64,8 @@ public class User {
     public void setBio(String bio) {
         this.bio = bio;
     }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 }

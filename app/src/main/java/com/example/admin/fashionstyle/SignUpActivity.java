@@ -78,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void SignUp(final String username, final String fullname, String email, String password) {
+    private void SignUp(final String username, final String fullname, final String email, String password) {
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -93,6 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
                             hashMap.put("username", username.toLowerCase());
                             hashMap.put("fullname", fullname);
                             hashMap.put("bio", "");
+                            hashMap.put("email", email);
                             hashMap.put("imageurl", "https://firebasestorage.googleapis.com/v0/b/fashionstyle2.appspot.com/o/placeholderImg.jpeg?alt=media&token=2560aa89-82f6-4f42-987f-3d0465fc82a3");
 
 
